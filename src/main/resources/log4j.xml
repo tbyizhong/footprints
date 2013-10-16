@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="ibatis" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/home/luoquan/tmp/logs/ibatis.log"/>
+		<param name="append" value="true"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="conversionPattern" value="[%p] %d %F:%L - %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="ddup-persist" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/home/luoquan/tmp/logs/ddup-dao.log"/>
+		<param name="append" value="true"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="conversionPattern" value="[%p] %d %F:%L - %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="ddup" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/home/luoquan/tmp/logs/ddup.log"/>
+		<param name="append" value="true"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="conversionPattern" value="[%p] %d %F:%L - %m%n"/>
+		</layout>
+	</appender>
+	
+	<logger name="com.ibatis" additivity="false">
+		<level value="DEBUG"></level>
+		<appender-ref ref="ibatis"/>
+	</logger>
+	
+	<logger name="com.luoquan.ddup.persist" additivity="false">
+		<level value="DEBUG"></level>
+		<appender-ref ref="ddup-persist"/>
+	</logger>
+	
+	<root>
+		<level value="DEBUG"></level>
+		<appender-ref ref="ddup"/>
+	</root>
+</log4j:configuration>
