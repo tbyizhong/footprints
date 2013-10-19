@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sample2="http://www.luoquan.com/schema/sample2"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.luoquan.com/schema/sample2 http://www.luoquan.com/schema/tags/sample2.xsd"
+       default-autowire="byName">
+
+
+    <sample2:parent id="haha">
+        <sample2:child name="jack" age="20"/>
+        <sample2:child name="john" age="12"/>
+    </sample2:parent>
+
+    <sample2:child id="rose" name="rose" age="18" />
+</beans>

@@ -18,4 +18,5 @@
             </xsd:complexContent>
         </xsd:complexType>
     </xsd:element>
+
 </xsd:schema>

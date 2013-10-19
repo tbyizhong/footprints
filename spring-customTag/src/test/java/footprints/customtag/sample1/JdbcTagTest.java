@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * Time: 上午9:15
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:bean-persistence.xml")
+@ContextConfiguration(locations = "classpath:sample1.xml")
 public class JdbcTagTest {
     @Autowired
     @Qualifier("defaultJdbcTemplate")

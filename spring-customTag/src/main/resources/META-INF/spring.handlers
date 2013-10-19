@@ -1,1 +1,2 @@
 http\://www.luoquan.com/schema/jdbc=footprints.customtag.sample1.JdbcTagsNamespaceHandler
+http\://www.luoquan.com/schema/sample2=footprints.customtag.sample2.Sample2TagsNamespaceHandler

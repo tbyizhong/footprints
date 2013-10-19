@@ -1,1 +1,2 @@
-http\://www.luoquan.com/schema/tags/jdbc.xsd=schemas/jdbc.xsd
+http\://www.luoquan.com/schema/tags/jdbc.xsd=schemas/customTag.xsd
+http\://www.luoquan.com/schema/tags/sample2.xsd=schemas/sample2.xsd
