@@ -9,11 +9,13 @@
 
     <modules>
         <module>login</module>
+	<module>spring-dao</module>
+	<module>spring-customTag</module>
     </modules>
 
     <properties>
         <junit.version>4.8</junit.version>
-        <spring.version>3.2.4.RELEASE</spring.version>
+        <spring.version>3.1.2.RELEASE</spring.version>
         <mysql.driver.version>5.1.21</mysql.driver.version>
         <ibatis.version>2.3.4.726</ibatis.version>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>

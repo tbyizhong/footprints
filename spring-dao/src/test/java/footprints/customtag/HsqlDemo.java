@@ -1,4 +1,4 @@
-package footprints.login;
+package footprints.customtag;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
