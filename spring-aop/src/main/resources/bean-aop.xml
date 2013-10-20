@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+
+
+    <bean id="hiService" class="footprints.aop.HiServiceImpl"></bean>
+
+    <bean id="allBeanAdvice" class="footprints.aop.AllBeanAdvice"></bean>
+    <bean id="allBeanAdvisor" class="footprints.aop.AllBeanAdvisor">
+        <property name="adviceBeanName" value="allBeanAdvice"></property>
+    </bean>
+
+
+
+    <bean id="logArgAdvice" class="footprints.aop.LogArgAdvice"></bean>
+    <bean id="logArgPointcut"
+          class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="sayHi" />
+    </bean>
+    <bean id="logArgAdvisor"
+          class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="logArgPointcut" />
+        <property name="advice" ref="logArgAdvice" />
+    </bean>
+    <bean id="logArgProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames">
+            <list>
+                <value>logArgAdvisor</value>
+            </list>
+        </property>
+        <property name="target">
+            <ref bean="hiService"/>
+        </property>
+    </bean>
+</beans>

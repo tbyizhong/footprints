@@ -11,6 +11,8 @@
         <module>login</module>
 	<module>spring-dao</module>
 	<module>spring-customTag</module>
+	<module>spring-aop</module>
+	<module>redis</module>
     </modules>
 
     <properties>
