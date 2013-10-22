@@ -4,7 +4,7 @@
        default-autowire="byName">
 
 
-    <bean id="hiService" class="footprints.aop.HiServiceImpl"></bean>
+    <bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
 
     <bean id="allBeanAdvice" class="footprints.aop.AllBeanAdvice"></bean>
     <bean id="allBeanAdvisor" class="footprints.aop.AllBeanAdvisor">

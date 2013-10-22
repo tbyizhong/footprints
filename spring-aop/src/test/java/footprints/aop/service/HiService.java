@@ -1,4 +1,4 @@
-package footprints.aop;
+package footprints.aop.service;
 
 /**
  * Created with IntelliJ IDEA.
