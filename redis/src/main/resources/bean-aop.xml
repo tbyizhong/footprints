@@ -6,14 +6,14 @@
 
     <bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
 
-    <bean id="allBeanAdvice" class="footprints.aop.AllBeanAdvice"></bean>
-    <bean id="allBeanAdvisor" class="footprints.aop.AllBeanAdvisor">
+    <bean id="allBeanAdvice" class="footprints.aop.advice.AllBeanAdvice"></bean>
+    <bean id="allBeanAdvisor" class="footprints.aop.advice.AllBeanAdvisor">
         <property name="adviceBeanName" value="allBeanAdvice"></property>
     </bean>
 
 
 
-    <bean id="logArgAdvice" class="footprints.aop.LogArgAdvice"></bean>
+    <bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
     <bean id="logArgPointcut"
           class="org.springframework.aop.support.NameMatchMethodPointcut">
         <property name="mappedName" value="sayHi" />

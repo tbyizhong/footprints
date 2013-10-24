@@ -6,31 +6,24 @@
 
     <bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
 
-    <bean id="allBeanAdvice" class="footprints.aop.AllBeanAdvice"></bean>
-    <bean id="allBeanAdvisor" class="footprints.aop.AllBeanAdvisor">
-        <property name="adviceBeanName" value="allBeanAdvice"></property>
+    <bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
+    <bean id="logExceptionAdvice" class="footprints.aop.advice.LogExceptionAdvice"></bean>
+    <bean id="logExeTimeAdvice" class="footprints.aop.advice.LogExeTimeAdvice"></bean>
+    <bean id="logResultAdvice" class="footprints.aop.advice.LogResultAdvice"></bean>
+    <bean id="controllableLogExeTimeAdvice" class="footprints.aop.advice.ControllableLogExeTimeAdvice"></bean>
+
+    <bean id="hiServiceProxy2" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="hiService"></property>
+        <property name="interceptorNames" value="logExeTimeAdvice,logResultAdvice,logArgAdvice,logExceptionAdvice"/>
+        <property name="proxyInterfaces" value="footprints.aop.service.HiService"></property>
+        <property name="optimize" value="true"></property>
     </bean>
 
+    <bean id="hiServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="hiService"></property>
+        <property name="interceptorNames" value="controllableLogExeTimeAdvice"/>
+        <property name="proxyInterfaces" value="footprints.aop.advice.Controllable,footprints.aop.service.HiService"></property>
+        <property name="optimize" value="true"></property>
+    </bean>
 
-
-    <bean id="logArgAdvice" class="footprints.aop.LogArgAdvice"></bean>
-    <bean id="logArgPointcut"
-          class="org.springframework.aop.support.NameMatchMethodPointcut">
-        <property name="mappedName" value="sayHi" />
-    </bean>
-    <bean id="logArgAdvisor"
-          class="org.springframework.aop.support.DefaultPointcutAdvisor">
-        <property name="pointcut" ref="logArgPointcut" />
-        <property name="advice" ref="logArgAdvice" />
-    </bean>
-    <bean id="logArgProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="interceptorNames">
-            <list>
-                <value>logArgAdvisor</value>
-            </list>
-        </property>
-        <property name="target">
-            <ref bean="hiService"/>
-        </property>
-    </bean>
 </beans>

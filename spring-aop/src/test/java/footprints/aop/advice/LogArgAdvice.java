@@ -1,4 +1,4 @@
-package footprints.aop;
+package footprints.aop.advice;
 
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.ThrowsAdvice;
@@ -21,13 +21,5 @@ public class LogArgAdvice implements MethodBeforeAdvice {
             }
         }
         System.out.println("------------------------------------------");
-    }
-
-    public void afterThrowing(RuntimeException e) {
-        System.out.println("RuntimeException...");
-    }
-
-    public void afterThrowing(NullPointerException e) {
-        System.out.println("NullPointerException...");
     }
 }
