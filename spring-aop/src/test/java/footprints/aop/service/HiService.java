@@ -7,6 +7,6 @@ package footprints.aop.service;
  * Time: 下午5:46
  */
 public interface HiService {
-    void sayHi(String name);
-    void sayHello(String name);
+    String sayHi(String name);
+    String sayHello(String name);
 }

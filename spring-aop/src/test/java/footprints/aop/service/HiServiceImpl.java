@@ -2,6 +2,8 @@ package footprints.aop.service;
 
 import java.util.Random;
 
+import org.springframework.cache.annotation.Cacheable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: luoquan
@@ -10,17 +12,18 @@ import java.util.Random;
  */
 public class HiServiceImpl implements HiService {
     @Override
-    public void sayHi(String name) {
+    public String sayHi(String name) {
         try {
             Thread.sleep(new Random().nextInt(5) * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         System.out.println("hi, " + name);
+        return "hi, " + name;
     }
 
     @Override
-    public void sayHello(String name) {
+    public String sayHello(String name) {
         try {
             Thread.sleep(new Random().nextInt(5) * 1000);
             throw new IllegalArgumentException("...");
@@ -28,5 +31,6 @@ public class HiServiceImpl implements HiService {
             e.printStackTrace();
         }
         System.out.println("hello, " + name);
+        return "hello, " + name;
     }
 }

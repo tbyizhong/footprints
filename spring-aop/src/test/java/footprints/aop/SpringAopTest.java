@@ -29,7 +29,7 @@ public class SpringAopTest {
 //        c.stop();
         hiService.sayHi("john");
 
-        hiService.sayHi("rose");
+        hiService.sayHi("jack");
 //        c.start();
 
     }
