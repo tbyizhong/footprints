@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
-       default-autowire="byName">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName">
 
 
-    <bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
+	<bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
 
-    <bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
-    <bean id="logExceptionAdvice" class="footprints.aop.advice.LogExceptionAdvice"></bean>
-    <bean id="logExeTimeAdvice" class="footprints.aop.advice.LogExeTimeAdvice"></bean>
-    <bean id="logResultAdvice" class="footprints.aop.advice.LogResultAdvice"></bean>
-    <bean id="controllableLogExeTimeAdvice" class="footprints.aop.advice.ControllableLogExeTimeAdvice"></bean>
+	<bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
+	<bean id="logExceptionAdvice" class="footprints.aop.advice.LogExceptionAdvice"></bean>
+	<bean id="logExeTimeAdvice" class="footprints.aop.advice.LogExeTimeAdvice"></bean>
+	<bean id="logResultAdvice" class="footprints.aop.advice.LogResultAdvice"></bean>
+	<bean id="controllableLogExeTimeAdvice" class="footprints.aop.advice.ControllableLogExeTimeAdvice"></bean>
 
-    <bean id="hiServiceProxy2" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="hiService"></property>
-        <property name="interceptorNames" value="logExeTimeAdvice,logResultAdvice,logArgAdvice,logExceptionAdvice"/>
-        <property name="proxyInterfaces" value="footprints.aop.service.HiService"></property>
-        <property name="optimize" value="true"></property>
-    </bean>
+	<bean id="hiServiceProxy2" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="hiService"></property>
+		<property name="interceptorNames" value="logExeTimeAdvice,logResultAdvice,logArgAdvice,logExceptionAdvice" />
+		<property name="proxyInterfaces" value="footprints.aop.service.HiService"></property>
+		<property name="optimize" value="true"></property>
+	</bean>
 
-    <bean id="hiServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="hiService"></property>
-        <property name="interceptorNames" value="controllableLogExeTimeAdvice"/>
-        <property name="proxyInterfaces" value="footprints.aop.advice.Controllable,footprints.aop.service.HiService"></property>
-        <property name="optimize" value="true"></property>
-    </bean>
+	<bean id="hiServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="hiService"></property>
+		<property name="interceptorNames" value="controllableLogExeTimeAdvice" />
+		<property name="proxyInterfaces" value="footprints.aop.advice.Controllable,footprints.aop.service.HiService"></property>
+		<property name="optimize" value="true"></property>
+	</bean>
+
+
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" scope="prototype">
+		<property name="pointcut" ref="fooPointcut" />
+		<property name="advice" ref="logArgAdvice" />
+	</bean>
+
+	<bean id="fooPointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
+		<property name="patterns">
+			<list>
+				<value>footprints.aop.service.HiService.*</value>
+			</list>
+		</property>
+	</bean>
 
 </beans>

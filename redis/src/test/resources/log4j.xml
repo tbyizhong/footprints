@@ -2,7 +2,7 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
     <appender name="springdao" class="org.apache.log4j.DailyRollingFileAppender">
-            <param name="file" value="/home/luoquan/tmp/logs/springaop.log"/>
+            <param name="file" value="/tmp/logs/springaop.log"/>
             <param name="append" value="false"/>
             <layout class="org.apache.log4j.PatternLayout">
                 <param name="conversionPattern" value="[%p] %d %F:%L - %m%n"/>
