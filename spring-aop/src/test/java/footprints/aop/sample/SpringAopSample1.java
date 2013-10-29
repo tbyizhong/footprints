@@ -1,4 +1,4 @@
-package footprints.aop.sample1;
+package footprints.aop.sample;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,4 +26,9 @@ public class SpringAopSample1 {
 		hiService.sayHi("john");
 	}
 
+
+  @Test
+  public void testAop2() {
+      hiService.sayHello("rose");
+  }
 }

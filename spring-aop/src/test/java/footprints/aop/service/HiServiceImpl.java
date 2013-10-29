@@ -26,11 +26,11 @@ public class HiServiceImpl implements HiService {
     public String sayHello(String name) {
         try {
             Thread.sleep(new Random().nextInt(5) * 1000);
-            throw new IllegalArgumentException("...");
+            System.out.println("hello, " + name);
+//            throw new IllegalArgumentException("...");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("hello, " + name);
         return "hello, " + name;
     }
 }
