@@ -7,21 +7,33 @@
      http://www.springframework.org/schema/cache/spring-cache.xsd"
 	default-autowire="byName">
 
-	<bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
+    <bean id="hiService" class="footprints.aop.service.HiServiceImpl"></bean>
+    <bean id="userService" class="footprints.aop.service.UserServiceImpl"></bean>
 
 	<bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
-	<bean id="logExeTimeAdvice" class="footprints.aop.advice.LogExeTimeAdvice"></bean>
 	<bean id="logResultAdvice" class="footprints.aop.advice.LogResultAdvice"></bean>
 
-	<bean id="advisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice" ref="logArgAdvice" />
-		<property name="pattern" value=".*sayHello" />
+    <bean id="pointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+         <property name="mappedNames">
+             <list>
+                 <value>sayHi</value>
+             </list>
+         </property>
+    </bean>
+
+	<bean id="advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="logResultAdvice" />
+		<property name="pointcut" ref="pointcut" />
 	</bean>
 
-	<bean id="hiServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<property name="target" ref="hiService" />
-		<property name="interceptorNames" value="advisor" />
-		<property name="proxyInterfaces" value="footprints.aop.service.HiService" />
-	</bean>
+    <bean id="hiServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="hiService" />
+        <property name="interceptorNames" value="advisor" />
+    </bean>
+
+    <bean id="userServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="userService" />
+        <property name="interceptorNames" value="advisor" />
+    </bean>
 
 </beans>

@@ -1,5 +1,6 @@
 package footprints.aop.sample;
 
+import footprints.aop.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,19 @@ import footprints.aop.service.HiService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:bean-sample2.xml")
 public class SpringAopSample2 {
-	@Autowired
-	@Qualifier("hiServiceProxy")
-	private HiService hiService;
+    @Autowired
+    @Qualifier("hiServiceProxy")
+    private HiService hiService;
+
+    @Autowired
+    @Qualifier("userServiceProxy")
+    private UserService userService;
 
 	@Test
 	public void testAop() {
 		hiService.sayHi("jack");
 
-		hiService.sayHi("john");
+		userService.sayHi("john");
 	}
 
 
