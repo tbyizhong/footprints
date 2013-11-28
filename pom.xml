@@ -12,6 +12,7 @@
 	<module>spring-dao</module>
 	<module>spring-customTag</module>
 	<module>spring-aop</module>
+	<module>proxy</module>
 	<module>redis</module>
     </modules>
 
