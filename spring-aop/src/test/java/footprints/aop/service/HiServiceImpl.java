@@ -1,6 +1,7 @@
 package footprints.aop.service;
 
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.cache.annotation.Cacheable;
 
@@ -11,6 +12,12 @@ import org.springframework.cache.annotation.Cacheable;
  * Time: 下午5:46
  */
 public class HiServiceImpl implements HiService {
+	private static final AtomicInteger count = new AtomicInteger(0);
+	
+	public HiServiceImpl() {
+		System.out.println("init ... HiServiceImpl" + count.incrementAndGet());
+	}
+	
     @Override
     public String sayHi(String name) {
         try {

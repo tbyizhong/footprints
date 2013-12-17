@@ -10,6 +10,7 @@
     <modules>
         <module>login</module>
 	<module>spring-dao</module>
+	<module>spring</module>
 	<module>spring-customTag</module>
 	<module>spring-aop</module>
 	<module>proxy</module>

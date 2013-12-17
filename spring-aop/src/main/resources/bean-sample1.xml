@@ -27,6 +27,7 @@
 		<property name="target" ref="hiService" />
 		<property name="interceptorNames" value="advisor" />
 		<property name="proxyInterfaces" value="footprints.aop.service.HiService" />
+		<property name="singleton" value="true" />
 	</bean>
 
 </beans>
