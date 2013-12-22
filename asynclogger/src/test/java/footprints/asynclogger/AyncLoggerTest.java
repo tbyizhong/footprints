@@ -1,0 +1,31 @@
+package footprints.asynclogger;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+import java.util.UUID;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: luoquan
+ * Date: 13-12-22
+ * Time: 下午8:22
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:beans.xml")
+public class AyncLoggerTest {
+    @Resource
+    private AsyncLogger logger;
+
+    @Test
+    public void testLog() {
+        for (int i = 0; i < 1000; i++)
+            logger.log(UUID.randomUUID().toString());
+
+
+    }
+
+}
