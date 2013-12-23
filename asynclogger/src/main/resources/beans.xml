@@ -7,13 +7,14 @@
        default-autowire="byName">
 
     <context:component-scan base-package="footprints.asynclogger"/>
-    <bean id="logArgAdvice" class="footprints.customtag.sample1.aop.advice.LogArgAdvice"></bean>
+    <bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
 
     <bean id="hi" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-         <property name="beanNames">
-             <list>
-                 <value>asyncLoggerImpl</value>
-             </list>
-         </property>
+        <property name="beanNames">
+            <list>
+                <value>asyncLoggerImpl</value>
+            </list>
+        </property>
+        <property name="interceptorNames" value="logArgAdvice"></property>
     </bean>
 </beans>
