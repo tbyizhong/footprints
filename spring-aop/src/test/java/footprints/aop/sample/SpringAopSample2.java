@@ -1,5 +1,6 @@
 package footprints.aop.sample;
 
+import footprints.aop.service.HiService;
 import footprints.aop.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import footprints.aop.service.HiService;
 
 /**
  * Created with IntelliJ IDEA. User: luoquan Date: 13-10-19 Time: 上午9:15

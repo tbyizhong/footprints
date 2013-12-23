@@ -1,6 +1,5 @@
 package footprints.aop;
 
-import footprints.aop.advice.Controllable;
 import footprints.aop.service.HiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
