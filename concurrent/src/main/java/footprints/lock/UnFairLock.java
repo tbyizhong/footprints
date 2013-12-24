@@ -26,6 +26,7 @@ public class UnFairLock extends RemeberThreadNameLock {
     @Override
     public synchronized void unlock() {
         if (threadHoldingLock == Thread.currentThread()) {
+            threadHoldingLock = null;
             locked = false;
             notify();
         }

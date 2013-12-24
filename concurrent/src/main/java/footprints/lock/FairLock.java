@@ -17,29 +17,34 @@ public class FairLock extends RemeberThreadNameLock {
     @Override
     public void lock() {
         boolean nameRemembered = false;
-        try {
-            while (true) {
-                Monitor monitor = new Monitor(Thread.currentThread());
-                synchronized (this) {
-                    if (!nameRemembered){
-                        remeberThreadName();
-                    }
-                    nameRemembered = true;
-                    if (!locked && ((next==null)||(next != null && next == Thread.currentThread()))) {
-                        locked = true;
-                        threadHoldingLock = Thread.currentThread();
-                        break;
-                    } else {
-                        monitorList.addLast(monitor);
-                    }
+
+        while (true) {
+            Monitor monitor = new Monitor(Thread.currentThread());
+            synchronized (this) {
+                if (!nameRemembered) {
+                    remeberThreadName();
                 }
+                nameRemembered = true;
+                if (!locked && ((next == null) || (next != null && next == Thread.currentThread()))) {
+                    locked = true;
+                    threadHoldingLock = Thread.currentThread();
+                    return;
+                } else {
+                    monitorList.addLast(monitor);
+                }
+            }
+            try {
                 synchronized (monitor) {
                     monitor.wait();
                 }
+            } catch (InterruptedException e) {
+                synchronized (this) {
+                    monitorList.remove(monitor);
+                }
+                e.printStackTrace();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
+
     }
 
     @Override
@@ -54,6 +59,7 @@ public class FairLock extends RemeberThreadNameLock {
                 monitor.notify();
             }
         }
+        threadHoldingLock = null;
         locked = false;
     }
 }
