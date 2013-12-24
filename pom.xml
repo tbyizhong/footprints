@@ -9,6 +9,7 @@
 
     <modules>
         <module>login</module>
+        <module>concurrent</module>
 	<module>spring-dao</module>
 	<module>asynclogger</module>
 	<module>spring</module>
