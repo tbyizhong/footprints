@@ -32,7 +32,7 @@
 	</bean>
 
 
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+	<!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->
 	<bean id="defaultPointcutAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" scope="prototype">
 		<property name="pointcut" ref="fooPointcut" />
 		<property name="advice" ref="logArgAdvice" />

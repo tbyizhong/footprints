@@ -8,13 +8,25 @@
 
     <context:component-scan base-package="footprints.asynclogger"/>
     <bean id="logArgAdvice" class="footprints.aop.advice.LogArgAdvice"></bean>
+    <bean id="logArgPoint" class="footprints.asynclogger.aop.LogArgPointcut"></bean>
 
-    <bean id="hi" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-        <property name="beanNames">
-            <list>
-                <value>asyncLoggerImpl</value>
-            </list>
-        </property>
-        <property name="interceptorNames" value="logArgAdvice"></property>
+    <bean id="logArgAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="logArgAdvice"></property>
+        <property name="pointcut" ref="logArgPoint"></property>
     </bean>
+
+    <bean id="logProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="asyncLoggerImpl"></property>
+        <property name="interceptorNames" value="logArgAdvisor"></property>
+    </bean>
+
+
+    <!--<bean id="hi" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+    <!--<property name="beanNames">-->
+    <!--<list>-->
+    <!--<value>asyncLoggerImpl</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--<property name="interceptorNames" value="logArgAdvice"></property>-->
+    <!--</bean>-->
 </beans>

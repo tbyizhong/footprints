@@ -21,7 +21,7 @@ public class HiServiceImpl implements HiService {
     @Override
     public String sayHi(String name) {
         try {
-            Thread.sleep(new Random().nextInt(5) * 1000);
+            Thread.sleep(new Random().nextInt(2000));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -32,7 +32,7 @@ public class HiServiceImpl implements HiService {
     @Override
     public String sayHello(String name) {
         try {
-            Thread.sleep(new Random().nextInt(5) * 1000);
+            Thread.sleep(new Random().nextInt(2000));
             System.out.println("hello, " + name);
 //            throw new IllegalArgumentException("...");
         } catch (InterruptedException e) {

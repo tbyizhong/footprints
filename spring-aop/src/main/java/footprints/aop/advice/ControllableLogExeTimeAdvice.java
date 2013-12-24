@@ -28,7 +28,7 @@ public class ControllableLogExeTimeAdvice extends DelegatingIntroductionIntercep
     public Object invoke(MethodInvocation mi) throws Throwable {
         Object result = super.invoke(mi);
         if (on) {
-            System.out.println("------------------------------------------");
+            System.out.println("===------------------------------------------");
             Method method = mi.getMethod();
             Object[] args = mi.getArguments();
             System.out.println("invoking " + method.getName() + ", arguments:");
@@ -37,7 +37,7 @@ public class ControllableLogExeTimeAdvice extends DelegatingIntroductionIntercep
                     System.out.println(obj);
                 }
             }
-            System.out.println("------------------------------------------");
+            System.out.println("===------------------------------------------");
         }
         return result;
     }
