@@ -34,9 +34,7 @@ public class FairLock extends RemeberThreadNameLock {
                 }
             }
             try {
-                synchronized (monitor) {
-                    monitor.wait();
-                }
+                monitor.doWait();
             } catch (InterruptedException e) {
                 synchronized (this) {
                     monitorList.remove(monitor);
@@ -55,9 +53,7 @@ public class FairLock extends RemeberThreadNameLock {
         if (monitorList.size() > 0) {
             Monitor monitor = monitorList.removeFirst();
             next = monitor.getThreadWaitingOnThis();
-            synchronized (monitor) {
-                monitor.notify();
-            }
+            monitor.doNotify();
         }
         threadHoldingLock = null;
         locked = false;
@@ -66,9 +62,23 @@ public class FairLock extends RemeberThreadNameLock {
 
 class Monitor {
     private Thread threadWaitingOnThis;
+    private boolean notified;
 
     public Monitor(Thread threadWaitingOnThis) {
         this.threadWaitingOnThis = threadWaitingOnThis;
+        this.notified = false;
+    }
+
+    public synchronized void doWait() throws InterruptedException {
+        if (!notified) {
+            wait();
+            notified = false;
+        }
+    }
+
+    public synchronized void doNotify() {
+        notified = true;
+        notify();
     }
 
     Thread getThreadWaitingOnThis() {
@@ -77,5 +87,13 @@ class Monitor {
 
     void setThreadWaitingOnThis(Thread threadWaitingOnThis) {
         this.threadWaitingOnThis = threadWaitingOnThis;
+    }
+
+    boolean isNotified() {
+        return notified;
+    }
+
+    void setNotified(boolean notified) {
+        this.notified = notified;
     }
 }
