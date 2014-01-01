@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-    <appender name="springdao" class="org.apache.log4j.DailyRollingFileAppender">
-            <param name="file" value="/tmp/logs/springaop.log"/>
+    <appender name="apache-commons" class="org.apache.log4j.DailyRollingFileAppender">
+            <param name="file" value="/tmp/logs/apache-commons.log"/>
             <param name="append" value="false"/>
             <layout class="org.apache.log4j.PatternLayout">
                 <param name="conversionPattern" value="[%p] %d %F:%L - %m%n"/>
@@ -17,7 +17,7 @@
 
     <root>
         <level value="DEBUG"/>
-        <appender-ref ref="springdao"></appender-ref>
+        <appender-ref ref="apache-commons"></appender-ref>
     </root>
 </log4j:configuration>
 
