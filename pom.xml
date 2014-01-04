@@ -9,6 +9,7 @@
 
     <modules>
         <module>login</module>
+        <module>serialization</module>
         <module>concurrent</module>
         <module>apache-commons</module>
 	<module>spring-dao</module>
