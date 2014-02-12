@@ -11,6 +11,7 @@
         <module>login</module>
         <module>serialization</module>
         <module>concurrent</module>
+        <module>guava</module>
         <module>apache-commons</module>
 	<module>spring-dao</module>
 	<module>asynclogger</module>

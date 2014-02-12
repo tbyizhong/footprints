@@ -7,14 +7,14 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>serialization</artifactId>
+	<artifactId>guava</artifactId>
 
 	<dependencies>
         <dependency>
-            <groupId>com.esotericsoftware.kryo</groupId>
-            <artifactId>kryo</artifactId>
-            <version>2.22</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>16.0.1</version>
         </dependency>
-    </dependencies>
+	</dependencies>
 
 </project>
