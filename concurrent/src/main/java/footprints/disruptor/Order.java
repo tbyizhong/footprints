@@ -1,7 +1,12 @@
 package footprints.disruptor;
 
 public class Order {
+    public static int count =0;
 	public String id;
+
+    public Order() {
+        System.out.println("Order created:" + (++count));
+    }
 
     public String getId() {
         return id;

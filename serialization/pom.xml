@@ -10,10 +10,6 @@
 	<artifactId>serialization</artifactId>
 
 	<dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>
