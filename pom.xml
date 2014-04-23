@@ -20,6 +20,7 @@
 	<module>spring-aop</module>
 	<module>proxy</module>
 	<module>redis</module>
+	<module>nio</module>
     </modules>
 
     <properties>
