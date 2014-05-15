@@ -22,7 +22,7 @@ public class NIOClient {
 	 * @param port  连接的服务器的端口号         
 	 * @throws IOException
 	 */
-	public void initClient(String ip,int port) throws IOException {t
+	public void initClient(String ip,int port) throws IOException {
 		// 获得一个Socket通道
 		SocketChannel channel = SocketChannel.open();
 		// 设置通道为非阻塞
